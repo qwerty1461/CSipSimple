@@ -126,7 +126,7 @@ void OPENSSL_cpuid_setup(void)
 
 			OPENSSL_armcap_P |= ARMV7_NEON;
 
-			if (hwcap & HWCAP_CE_AES)
+			/*if (hwcap & HWCAP_CE_AES)
 				OPENSSL_armcap_P |= ARMV8_AES;
 
 			if (hwcap & HWCAP_CE_PMULL)
@@ -136,14 +136,14 @@ void OPENSSL_cpuid_setup(void)
 				OPENSSL_armcap_P |= ARMV8_SHA1;
 
 			if (hwcap & HWCAP_CE_SHA256)
-				OPENSSL_armcap_P |= ARMV8_SHA256;
+				OPENSSL_armcap_P |= ARMV8_SHA256;*/
 			}
 		}
 	else if (sigsetjmp(ill_jmp,1) == 0)
 		{
 		_armv7_neon_probe();
 		OPENSSL_armcap_P |= ARMV7_NEON;
-		if (sigsetjmp(ill_jmp,1) == 0)
+		/*if (sigsetjmp(ill_jmp,1) == 0)
 			{
 			_armv8_pmull_probe();
 			OPENSSL_armcap_P |= ARMV8_PMULL|ARMV8_AES;
@@ -162,7 +162,7 @@ void OPENSSL_cpuid_setup(void)
 			{
 			_armv8_sha256_probe();
 			OPENSSL_armcap_P |= ARMV8_SHA256;
-			}
+			}*/
 		}
 	if (sigsetjmp(ill_jmp,1) == 0)
 		{
